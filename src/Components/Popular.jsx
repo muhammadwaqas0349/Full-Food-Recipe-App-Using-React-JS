@@ -9,16 +9,11 @@ const Popular = () => {
   const [popular, setPopular] = useState([]); 
 
 const gerPopular = async () => {
-  const check = localStorage.getItem("popular"); 
-    if(check){
-      setPopular(JSON.parse(check)); }
-
-     else{
+  
       const api = await fetch(`https:api.spoonacular.com/recipes/random?apiKey=d6e32ad7cda246d389bfa1aa91cdd22e&number=9`);
       const data = await api.json();
-      localStorage.setItem("popular", JSON.stringify(data.recipes)); 
       setPopular(data.recipes); 
-     } 
+     
 };
 
 useEffect( () => {
